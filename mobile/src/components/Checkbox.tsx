@@ -2,6 +2,7 @@ import { Text, TouchableOpacity, TouchableOpacityProps, View } from "react-nativ
 import { Feather } from '@expo/vector-icons'
 import colors from "tailwindcss/colors";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
+import clsx from "clsx";
 
 interface Props extends TouchableOpacityProps {
   title: string;
@@ -32,7 +33,9 @@ export function Checkbox({ title, checked = false, ...rest }: Props) {
         <View className="h-8 w-8 bg-zinc-900 rounded-lg" />
       }
 
-      <Text className="text-white text-base ml-3 font-semibold">
+      <Text className={clsx('text-white text-base ml-3 font-semibold', {
+          ['line-through text-zinc-400']: checked,
+        })}>
         {title}
       </Text>
     </TouchableOpacity>
